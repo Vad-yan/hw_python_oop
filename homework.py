@@ -40,6 +40,7 @@ class Record ():
         return f'Потрачено {self.amount} руб. на {self.comment} {self.date}'
 
 
+
 r1 = Record(amount=145, comment="Безудержный шопинг")
 r2 = Record(amount=568, comment="Наполнение потребительской корзины")
 r3 = Record(amount=691, comment="Катание на такси", date="08.03.2019")
