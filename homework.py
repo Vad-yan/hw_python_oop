@@ -59,23 +59,20 @@ class Record ():
 r1 = Record(amount=145, comment="Безудержный шопинг")
 r2 = Record(amount=568, comment="Наполнение потребительской корзины")
 r3 = Record(amount=691, comment="Катание на такси", date="26.02.2021")
-
 # print(f'Потрачено {r3.amount} руб. на {r3.comment} {r3.date}')
 # print(r3.getstring())
-print(r3)
-
+# print(r3)
 cash_calculator = CashCalculator(1000)
-
-cash_calculator.add_record(Record(amount=145, comment="кофе"))
+# cash_calculator.add_record(Record(amount=145, comment="кофе"))
 cash_calculator.add_record(r1)
 cash_calculator.add_record(r2)
 cash_calculator.add_record(r3)
-print(cash_calculator.records)
+# print(cash_calculator.records)
 
-#for elem in cash_calculator.records:
-#   print(elem)
+for elem in cash_calculator.records:
+   print(elem)
 
-print(cash_calculator.get_today_stats())
-print(cash_calculator.get_week_stats())
+print(f'Потрачено за сегодня {dt.datetime.now().date()}: {cash_calculator.get_today_stats()} руб.')
+print(f'Потрачено за последние 7 дней ({dt.datetime.now().date()-dt.timedelta(days=7)} - {dt.datetime.now().date()}): {cash_calculator.get_week_stats()} руб.')
 
 
