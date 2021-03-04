@@ -28,12 +28,20 @@ class Calculator:
 
 
 class CashCalculator(Calculator):
-    def get_today_cash_remained(self, currency):
-        pass
+    def get_today_cash_remained(self):   #, currency
+        if amount_sum < limit:
+            return (f'«На сегодня осталось {limit-amount_sum} руб/USD/Euro»') # — в случае, если лимит limit не достигнут,
+        elif amount_sum = limit:
+            return (f'«Денег нет, держись»') #, если лимит достигнут,
+        elif amount_sum > limit:
+            return (f'«Денег нет, держись: твой долг {limit-amount_sum} руб/USD/Euro»') #  если лимит превышен.
 
 
 class CaloriesCalculator(Calculator):
     def get_calories_remained(self, currency):
+
+        «Сегодня можно съесть что-нибудь ещё, но с общей калорийностью не более N кКал», если лимит limit не достигнут,
+        «Хватит есть!», если лимит достигнут или превышен.
         pass
 
 
