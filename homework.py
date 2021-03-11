@@ -9,7 +9,7 @@ class Calculator:
     def add_record(self, record):
         self.records.append(record)
 
-    def get_today_stats(self, today_stats=None):
+    def get_today_stats(self):
         amount_sum = 0
         for record in self.records:
             if record.date == dt.datetime.now().date():
@@ -29,6 +29,8 @@ class Calculator:
 
 class CashCalculator(Calculator):
     def get_today_cash_remained(self):   #, currency
+        amount_sum = self.get_today_stats()
+        limit = self.limit
         if amount_sum < limit:
             return (f'«На сегодня осталось {limit-amount_sum} руб/USD/Euro»') # — в случае, если лимит limit не достигнут,
         elif amount_sum == limit:
@@ -38,10 +40,11 @@ class CashCalculator(Calculator):
 
 
 class CaloriesCalculator(Calculator):
-    def get_calories_remained(self, currency):
-
-        #«Сегодня можно съесть что-нибудь ещё, но с общей калорийностью не более N кКал», если лимит limit не достигнут,
-        #«Хватит есть!», если лимит достигнут или превышен.
+    def get_calories_remained(self):
+        #if amount_sum < limit:
+        #return (f'«Сегодня можно съесть что-нибудь ещё, но с общей калорийностью не более N кКал»'), если лимит limit не достигнут,
+        #elif amount_sum > limit:
+        #return (f'«Хватит есть!»'), если лимит достигнут или превышен.
         pass
 
 
