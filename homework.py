@@ -1,3 +1,5 @@
+#11.03.2021чт13.08
+
 import datetime as dt
 
 
@@ -40,12 +42,13 @@ class CashCalculator(Calculator):
 
 
 class CaloriesCalculator(Calculator):
-    def get_calories_remained(self):
-        #if amount_sum < limit:
-        #return (f'«Сегодня можно съесть что-нибудь ещё, но с общей калорийностью не более N кКал»'), если лимит limit не достигнут,
-        #elif amount_sum > limit:
-        #return (f'«Хватит есть!»'), если лимит достигнут или превышен.
-        pass
+    def get_today_calories_remained(self):
+        amount_sum_kkal = self.get_today_stats()
+        limit = self.limit
+        if amount_sum_kkal < limit:
+            return (f'«Сегодня можно съесть что-нибудь ещё, но с общей калорийностью не более {limit-amount_sum_kkal} кКал»') #, если лимит limit не достигнут,
+        else:
+            return (f'«Хватит есть!»')  #  если лимит достигнут или превышен.
 
 
 class Record ():
@@ -70,6 +73,9 @@ class Record ():
 r1 = Record(amount=145, comment="Безудержный шопинг")
 r2 = Record(amount=568, comment="Наполнение потребительской корзины")
 r3 = Record(amount=691, comment="Катание на такси", date="03.03.2021")
+r4 = Record(amount=145, comment="Завтрак")
+r5 = Record(amount=600, comment="Тарелка пельменей")
+r6 = Record(amount=691, comment="Ужин", date="03.03.2021")
 # print(f'Потрачено {r3.amount} руб. на {r3.comment} {r3.date}')
 # print(r3.getstring())
 # print(r3)
@@ -87,4 +93,8 @@ print(f'Потрачено за сегодня {dt.datetime.now().date()}: {cash
 print(f'Потрачено за последние 7 дней ({dt.datetime.now().date()-dt.timedelta(days=7)} - {dt.datetime.now().date()}): {cash_calculator.get_week_stats()} руб.')
 print(f'{cash_calculator.get_today_cash_remained()}')
 
-
+kkal_calculator = CaloriesCalculator(2000)
+kkal_calculator.add_record(r4)
+kkal_calculator.add_record(r5)
+kkal_calculator.add_record(r6)
+print(f'{kkal_calculator.get_today_calories_remained()}')
