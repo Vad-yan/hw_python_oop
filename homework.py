@@ -42,7 +42,7 @@ class CashCalculator(Calculator):
 
 
 class CaloriesCalculator(Calculator):
-    def get_today_calories_remained(self):
+    def get_calories_remained(self):
         amount_sum_kkal = self.get_today_stats()
         limit = self.limit
         if amount_sum_kkal < limit:
@@ -97,4 +97,4 @@ kkal_calculator = CaloriesCalculator(2000)
 kkal_calculator.add_record(r4)
 kkal_calculator.add_record(r5)
 kkal_calculator.add_record(r6)
-print(f'{kkal_calculator.get_today_calories_remained()}')
+print(f'{kkal_calculator.get_calories_remained()}')
